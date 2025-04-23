@@ -8,7 +8,7 @@ def detectRectangleContours(contours):
     for i in contours:
         area = cv2.contourArea(i)
         print("Area : ", area)
-        if area > 50:
+        if area > 50: # area that  we consider to check is it contour
             peri = cv2.arcLength(i, True)
             approx = cv2.approxPolyDP(i, 0.02 * peri, True)  # getting corner count
             print("Corner points : ", len(approx))
