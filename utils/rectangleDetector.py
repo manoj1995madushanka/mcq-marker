@@ -26,16 +26,18 @@ def getCornerPoints(cont):
     return approx
 
 
+# this function reorder the rectangle x,y points
 def reOrder(mypoints):
     myPoints = mypoints.reshape((4, 2))
     mypointsNew = np.zeros((4, 1, 2), np.int32)
+
     add = myPoints.sum(1)
-    print(mypoints)
-    print(add)
-    mypointsNew[0] = mypoints[np.argmin(add)]  # [0,0]
-    mypointsNew[3] = mypoints[np.argmax(add)]  # [width,height]
-    diff = np.diff(mypoints, axis=1)
-    mypointsNew[1] = mypoints[np.argmin(diff)]  # [width,0]
-    mypointsNew[2] = mypoints[np.argmax(diff)]  # [height,0]
-    print(diff)
+    mypointsNew[0] = myPoints[np.argmin(add)]      # [0,0]
+    mypointsNew[3] = myPoints[np.argmax(add)]      # [w,h]
+
+    diff = np.diff(myPoints, axis=1)
+    mypointsNew[1] = myPoints[np.argmin(diff)]     # [w,0]
+    mypointsNew[2] = myPoints[np.argmax(diff)]     # [0,h]
+
     return mypointsNew
+

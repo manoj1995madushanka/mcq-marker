@@ -1,15 +1,15 @@
 import cv2
 
 
-def showAnswers(img, myIndex, grading, answers, questions, choises):
+def showAnswers(img, myIndex, grading, answers, questions, choices):
     sectionWidth = int(img.shape[1] / questions)
-    sectionHeight = int(img.shape[0] / choises)
+    sectionHeight = int(img.shape[0] / choices)
 
     for x in range(0, questions):
         myAnswer = myIndex[x]
         # Finding center point
         cX = (myAnswer * sectionWidth) + sectionWidth // 2
-        cY = (x + sectionHeight) + sectionHeight // 2
+        cY = (x * sectionHeight) + sectionHeight // 2
 
         if grading[x] == 1:
             myColor = (0, 255, 0)
